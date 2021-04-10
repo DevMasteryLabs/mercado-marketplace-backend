@@ -47,7 +47,7 @@ app.get('/items', async (req, res) => {
         const items = await Item.find()
         res.status(200).json(items)
     } catch (error) {
-        res.status(500).json({ error })
+        res.status(500).json({ error: error.message })
     }
 })
 
@@ -60,7 +60,7 @@ app.get('/items/:id', async (req, res) => {
             res.status(404).json({ error: "Item not found" })
         }
     } catch (error) {
-        res.status(500).json({ error })
+        res.status(500).json({ error: error.message })
     }
 })
 
@@ -80,7 +80,7 @@ app.post('/items', async (req, res) => {
             res.status(201).json({message: "Item created successfully"})
         }    
     } catch (error) {
-        res.status(500).json({ error })
+        res.status(500).json({ error: error.message })
     }
 })
 
